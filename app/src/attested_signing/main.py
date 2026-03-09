@@ -40,7 +40,7 @@ def main() -> None:
 
     # 2. Register the signer on-chain (ROFL-authenticated)
     log.info("Registering signer on contract %s...", checksum_addr)
-    register_data = contract.encodeABI(fn_name="registerSigner", args=[acct.address])
+    register_data = contract.encode_abi(fn_name="registerSigner", args=[acct.address])
     client.sign_submit(
         {"to": checksum_addr, "gas": 200_000, "value": 0, "data": register_data}
     )
@@ -68,7 +68,7 @@ def main() -> None:
             sig = Account.sign_message(message, private_key=f"0x{private_key_hex}")
 
             # Submit signed data on-chain (ROFL-authenticated)
-            submit_data = contract.encodeABI(
+            submit_data = contract.encode_abi(
                 fn_name="submitData", args=[data_str, bytes(sig.signature)]
             )
             client.sign_submit(

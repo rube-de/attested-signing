@@ -48,15 +48,13 @@ came from a TEE-attested key — without trusting any individual or server.
 
 ## Quick Start
 
-### 1. Create the ROFL app
+### 1. Set up wallet and create the ROFL app
 
 ```bash
-# Create a wallet (if you don't have one)
-oasis wallet create my_wallet --algorithm secp256k1-bip44
-
-# Fund it via https://faucet.testnet.oasis.io
-# Then deposit to Sapphire ParaTime
-oasis account deposit 10 --network testnet --paratime sapphire --account my_wallet
+# 1. Create a new wallet in MetaMask and copy the private key
+# 2. Fund it with Sapphire Testnet tokens from https://faucet.testnet.oasis.io
+# 3. Import the private key into the Oasis CLI
+oasis wallet import my_wallet --algorithm secp256k1-raw --secret
 
 # Create the ROFL app on-chain
 oasis rofl create --network testnet --account my_wallet

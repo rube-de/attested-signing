@@ -54,7 +54,7 @@ came from a TEE-attested key — without trusting any individual or server.
 # 1. Create a new wallet in MetaMask and copy the private key
 # 2. Fund it with Sapphire Testnet tokens from https://faucet.testnet.oasis.io
 # 3. Import the private key into the Oasis CLI
-oasis wallet import my_wallet --algorithm secp256k1-raw --secret
+oasis wallet import my_wallet --algorithm secp256k1-raw --secret <0xYOUR_PRIVATE_KEY>
 
 # Create the ROFL app on-chain
 oasis rofl create --network testnet --account my_wallet

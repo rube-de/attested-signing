@@ -101,6 +101,7 @@ echo -n "0xYOUR_CONTRACT_ADDRESS" | oasis rofl secret set CONTRACT_ADDRESS -
 
 # Build and deploy the ROFL app
 oasis rofl build
+oasis rofl update
 oasis rofl deploy
 ```
 

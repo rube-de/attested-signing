@@ -87,6 +87,8 @@ Update `compose.yaml` with your image name, then:
 docker compose build --push
 ```
 
+> **Note:** If pushing to GHCR, make sure the package visibility is set to **public** — ROFL nodes need to pull the image.
+
 ### 4. Set secrets and deploy
 
 ```bash

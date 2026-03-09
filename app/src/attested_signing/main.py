@@ -63,8 +63,9 @@ def main() -> None:
                 separators=(",", ":"),
             )
 
-            # Sign with the TEE-generated key
-            message = encode_defunct(text=data_str)
+            # Sign the hash of the data (matches contract's keccak256 + toEthSignedMessageHash)
+            data_hash = Web3.keccak(text=data_str)
+            message = encode_defunct(primitive=data_hash)
             sig = Account.sign_message(message, private_key=f"0x{private_key_hex}")
 
             # Submit signed data on-chain (ROFL-authenticated)

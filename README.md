@@ -113,20 +113,13 @@ oasis rofl machine show
 
 # Check logs
 oasis rofl machine logs
+
+# Verify the on-chain signature (set CONTRACT_ADDRESS in .env first)
+cd contracts
+bun run verify:testnet
+cd ..
 ```
 
-On-chain, anyone can call `verifyData()` to confirm the signature came from the
-TEE-attested key.
-
-## Local development
-
-```bash
-cd app
-uv sync
-# The app expects the appd socket at /run/rofl-appd.sock
-# For local testing, use sapphire-localnet:
-# docker run -it -p8544-8548:8544-8548 -v .:/rofls ghcr.io/oasisprotocol/sapphire-localnet
-```
 
 ## Project structure
 

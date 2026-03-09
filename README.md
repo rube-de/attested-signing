@@ -81,17 +81,11 @@ cd ..
 
 ### 3. Build and push the container image
 
+Update `compose.yaml` with your image name, then:
+
 ```bash
-cd ../app
-
-# Build
-docker build -t YOUR_DOCKERHUB_USER/attested-signing:0.1.0 --platform linux/amd64 .
-
-# Push
-docker push YOUR_DOCKERHUB_USER/attested-signing:0.1.0
+docker compose build --push
 ```
-
-Update `compose.yaml` with your image name.
 
 ### 4. Set secrets and deploy
 

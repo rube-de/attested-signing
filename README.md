@@ -42,26 +42,15 @@ came from a TEE-attested key — without trusting any individual or server.
 
 - [Oasis CLI](https://docs.oasis.io/general/manage-tokens/cli/setup)
 - [Docker](https://docs.docker.com/get-docker/) (for ROFL builds)
-- [Node.js](https://nodejs.org/) 18+ (for Hardhat)
+- [Bun](https://bun.sh/) (for Hardhat)
 - [Python](https://python.org/) 3.11+ and [uv](https://docs.astral.sh/uv/) (for local dev)
 - Sapphire Testnet tokens from https://faucet.testnet.oasis.io
 
 ## Quick Start
 
-### 1. Deploy the contract
+### 1. Create the ROFL app
 
 ```bash
-cd contracts
-npm install
-cp .env.example .env
-# Edit .env: add your PRIVATE_KEY and ROFL_APP_ID (see step 2)
-```
-
-### 2. Create the ROFL app
-
-```bash
-cd ..  # back to attested-signing/
-
 # Create a wallet (if you don't have one)
 oasis wallet create my_wallet --algorithm secp256k1-bip44
 
@@ -77,16 +66,19 @@ oasis rofl create --network testnet --account my_wallet
 oasis rofl show --network testnet
 ```
 
-### 3. Deploy the contract
+### 2. Deploy the contract
 
 ```bash
 cd contracts
-# Set ROFL_APP_ID in .env (bech32 format, rofl1q...)
-npm run deploy:testnet
+cp .env.example .env
+# Edit .env: add your PRIVATE_KEY and ROFL_APP_ID (bech32 format, rofl1q...)
+bun install
+bun run deploy:testnet
 # Note the contract address
+cd ..
 ```
 
-### 4. Build and push the container image
+### 3. Build and push the container image
 
 ```bash
 cd ../app
@@ -100,11 +92,9 @@ docker push YOUR_DOCKERHUB_USER/attested-signing:0.1.0
 
 Update `compose.yaml` with your image name.
 
-### 5. Set secrets and deploy
+### 4. Set secrets and deploy
 
 ```bash
-cd ..  # back to attested-signing/
-
 # Set the contract address as an environment variable
 echo -n "0xYOUR_CONTRACT_ADDRESS" | oasis rofl secret set CONTRACT_ADDRESS -
 
@@ -113,7 +103,7 @@ oasis rofl build
 oasis rofl deploy
 ```
 
-### 6. Verify it works
+### 5. Verify it works
 
 ```bash
 # Check ROFL app status

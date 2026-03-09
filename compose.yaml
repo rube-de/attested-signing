@@ -1,0 +1,10 @@
+services:
+  signer:
+    image: docker.io/oasisprotocol/attested-signing:0.1.0
+    platform: linux/amd64
+    environment:
+      - CONTRACT_ADDRESS=${CONTRACT_ADDRESS}
+      - FETCH_INTERVAL=${FETCH_INTERVAL:-60}
+      - KEY_ID=${KEY_ID:-attested-signer-v1}
+    volumes:
+      - /run/rofl-appd.sock:/run/rofl-appd.sock

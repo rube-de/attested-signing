@@ -1,0 +1,22 @@
+{
+  "name": "attested-signing-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:testnet": "hardhat run scripts/deploy.ts --network sapphire_testnet"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@oasisprotocol/sapphire-contracts": "^0.2.15",
+    "@oasisprotocol/sapphire-hardhat": "^2.22.2",
+    "@openzeppelin/contracts": "5.0.2",
+    "dotenv": "^16.4.0",
+    "hardhat": "^2.22.0",
+    "typescript": "^5.5.0"
+  },
+  "dependencies": {
+    "bech32": "^2.0.0"
+  }
+}

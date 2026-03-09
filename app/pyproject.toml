@@ -1,0 +1,18 @@
+[project]
+name = "attested-signing"
+version = "0.1.0"
+description = "ROFL TEE-attested signing service — workshop demo"
+requires-python = ">=3.11"
+dependencies = [
+    "oasis-rofl-client>=0.1.0",
+    "eth-account>=0.13.0",
+    "web3>=7.14.0",
+    "httpx>=0.25.0",
+]
+
+[project.scripts]
+attested-signing = "attested_signing.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
